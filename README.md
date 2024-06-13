@@ -16,7 +16,7 @@ important file
 
  ==========================================================
 # <!-- index.php -->
-"<?php include 'header.php'; ?>
+"<?php include 'header.php'; ?>''
 
 <main>
     <p>This is the main content of the page.</p>
