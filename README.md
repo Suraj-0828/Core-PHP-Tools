@@ -18,9 +18,9 @@ important file
 # <!-- index.php -->
 #<?php include 'header.php'; ?>''
 
-#<main>
-    #<p>This is the main content of the page.</p>
-#</main>
+<main>
+    <p>This is the main content of the page.</p>
+</main>
 
 #<?php include 'footer.php'; ?>"
 ===========================================================
@@ -51,6 +51,8 @@ important file
     package.json (if using npm)
     README.md
 
+    #after this 
+===========================================
     <?php include 'components/header.php'; ?>
 <?php include 'components/nav.php'; ?>
 
