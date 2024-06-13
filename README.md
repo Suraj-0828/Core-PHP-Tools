@@ -22,7 +22,7 @@ important file
     <p>This is the main content of the page.</p>
 </main>
 
-<?php include 'footer.php'; ?>```
+<?php include 'footer.php'; ?>
 ===========================================================
  # Project Root #
 ===========================================================
