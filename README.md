@@ -16,13 +16,13 @@ important file
 
  ==========================================================
 ``` <!-- index.php -->
-#<?php include 'header.php'; ?>''
+<?php include 'header.php'; ?>
 
 <main>
     <p>This is the main content of the page.</p>
 </main>
 
-<?php include 'footer.php'; ?>"
+<?php include 'footer.php'; ?>```
 ===========================================================
  # Project Root #
 ===========================================================
