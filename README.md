@@ -15,7 +15,7 @@ important file
 11. assets/javascript.....
 
  ==========================================================
- <!-- index.php -->
+# <!-- index.php -->
 <?php include 'header.php'; ?>
 
 <main>
@@ -24,9 +24,9 @@ important file
 
 <?php include 'footer.php'; ?>
 ===========================================================
-  Project Root
+ # Project Root
 ===========================================================
-/project-root
+# /project-root
     /assets
         /images
         /fonts
