@@ -24,7 +24,7 @@ important file
 
 <?php include 'footer.php'; ?>
 ===========================================================
- # Project Root
+ # Project Root #
 ===========================================================
 # /project-root
     /assets
