@@ -15,14 +15,14 @@ important file
 11. assets/javascript.....
 
  ==========================================================
-# <!-- index.php -->
+``` <!-- index.php -->
 #<?php include 'header.php'; ?>''
 
 <main>
     <p>This is the main content of the page.</p>
 </main>
 
-#<?php include 'footer.php'; ?>"
+<?php include 'footer.php'; ?>"
 ===========================================================
  # Project Root #
 ===========================================================
