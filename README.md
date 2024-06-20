@@ -65,6 +65,11 @@ important file
 
 <?php include 'components/footer.php'; ?>
 ========================================================
+
+# Backend PHP CODE FORM SUBMIT GET MESSAGE ON GMAIL
+
+========================================================
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and retrieve form data
