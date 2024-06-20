@@ -65,3 +65,70 @@ important file
 
 <?php include 'components/footer.php'; ?>
 ========================================================
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and retrieve form data
+    $firstname = htmlspecialchars($_POST['firstname']);
+    $lastname = htmlspecialchars($_POST['lastname']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
+
+    // Prepare email content
+    $to = "your-email@example.com"; // Replace with your email address
+    $subject = "New Contact Form Submission";
+    $message = "First Name: $firstname\n";
+    $message .= "Last Name: $lastname\n";
+    $message .= "Email: $email\n";
+    $message .= "Phone: $phone\n";
+
+    $headers = "From: $email";
+
+    // File upload handling
+    if ($_FILES['file']['error'] == 0) {
+        $file_path = $_FILES['file']['tmp_name'];
+        $file_name = $_FILES['file']['name'];
+        $file_type = $_FILES['file']['type'];
+
+        // Validate file type (optional)
+        $allowed_types = array('application/pdf'); // Add more MIME types as needed
+        if (in_array($file_type, $allowed_types)) {
+            $file_content = chunk_split(base64_encode(file_get_contents($file_path)));
+
+            // Append file to email message
+            $boundary = md5(uniqid(time()));
+            $headers .= "\r\nMIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n\r\n";
+            $message = "--$boundary\r\n";
+            $message .= "Content-Type: text/plain; charset=\"utf-8\"\r\n";
+            $message .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+            $message .= "First Name: $firstname\n";
+            $message .= "Last Name: $lastname\n";
+            $message .= "Email: $email\n";
+            $message .= "Phone: $phone\n";
+            $message .= "--$boundary\r\n";
+            $message .= "Content-Type: application/pdf; name=\"$file_name\"\r\n";
+            $message .= "Content-Transfer-Encoding: base64\r\n";
+            $message .= "Content-Disposition: attachment; filename=\"$file_name\"\r\n\r\n";
+            $message .= $file_content . "\r\n";
+            $message .= "--$boundary--";
+        } else {
+            // Invalid file type, handle error as needed
+            header("Location: failed.php?error=filetype");
+            exit();
+        }
+    }
+
+    // Send email
+    if (mail($to, $subject, $message, $headers)) {
+        header("Location: send.php"); // Redirect to send.php on success
+        exit();
+    } else {
+        header("Location: failed.php"); // Redirect to failed.php on failure
+        exit();
+    }
+} else {
+    header("Location: index.php"); // Redirect back to index.php if accessed directly
+    exit();
+}
+?>
+
